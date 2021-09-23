@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DammioMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DammioMVC.dbo.Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Link">
+    <Key>
+      <PropertyRef Name="LinkID" />
+    </Key>
+    <Property Name="LinkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LinkName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LinkDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="CategoryID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="DammioMVCModelStoreContainer">
+    <EntitySet Name="Link" EntityType="Self.Link" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Category].[CategoryID] AS [CategoryID], 
+    [Category].[CategoryName] AS [CategoryName]
+    FROM [dbo].[Category] AS [Category]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
