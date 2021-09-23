@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<form>
+    <div class="mb-3" style="margin-top:50px;margin-bottom:20px">
+        <label for="exampleInputEmail" class="form-label">USER</label>
+        <input class="form-control user" placeholder="nhập user">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword" class="form-label">Password</label>
+        <input type="password" class="form-control pass" id="pass" placeholder="nhập pass">
+    </div>
+
+    @*<button type="submit" class="btn btn-danger btnLogin" onClick="checkLogin()">@Html.ActionLink("Đăng nhập", "Success", "USERs")</button>*@
+    <button type="submit" class="btn btn-danger btnLogin">@Html.ActionLink("Đăng nhập", "Login", "USERs")</button>
+
+</form>

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Hello";
+}
+
+<h2>Hello</h2>
+<h3>Đây là nội dung của tập tin Hello.cshtml được xử lý từ phương thức Hello ở controller Dammio (DammioController).</h3>
+<ul>
+    @for (int i = 0; i < ViewBag.NumTimes; i++)
+    {
+        <li>@ViewBag.Message</li>
+        <li>@ViewBag.Address</li>
+    }
+</ul>

@@ -1,0 +1,16 @@
+﻿/*body {
+
+}*/
+.menuitem a{
+    color: black;
+    font: bold;
+    font-size: 20px;
+    text-decoration:none;
+}
+.btnLogin {
+    list-style: none;
+}
+.btnLogin a{
+    text-decoration: none;
+    color: white;
+}

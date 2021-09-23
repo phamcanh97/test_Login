@@ -1,0 +1,70 @@
+﻿@model IEnumerable<test1.Models.Link>
+@*ienumberabke giúp 1 đối tượng có thể thực hiện duyệt các phần tử bằng foreach *@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+    <!-- Đoạn cần thêm cho mục tìm kiếm-->
+    @using (Html.BeginForm("Index", "Link", FormMethod.Get)) // -- index là phương thức, link là controller, formmethod.get là định nghĩa pt get hay post
+        {
+            <p>
+                Nhập tên liên kết: @Html.TextBox("SearchString") <input type="submit" class="btn btn-info" value="Tìm kiếm" />
+            </p>
+        }
+    <!-- Kết thúc -->
+    <!-- 1. Đoạn cần thêm -->
+    @*@using (Html.BeginForm("Index", "Link", FormMethod.Get))
+    {
+    <p>
+        Title: @Html.TextBox("SearchString") --- Category: @Html.DropDownList("categoryID", "All") <input type="submit" value="Tìm kiếm" />
+    </p>
+        }*@
+
+    <!-- Kết thúc -->
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkName)   @*nhãn DisplayNameFor razor*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryID)
+            </th>
+            <!-- 2. Đoạn cần thêm cho tìm kiếm theo danh mục-->
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <!-- Kết thúc -->
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LinkName)   @*giá trị DisplayFor razor*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LinkDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LinkID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.LinkID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.LinkID })
+                    @*@Html.ActionLink()*@
+                </td>
+            </tr>
+        }
+
+    </table>
+<p>
